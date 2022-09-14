@@ -25,17 +25,17 @@ var alumnos = /** @class */ (function () {
 //creo clase maestros
 var maestros = /** @class */ (function () {
     function maestros(pNombre, pApellido, pMateria, pEstado) {
-        this.nomrbe = pNombre;
+        this.nombre = pNombre;
         this.apellido = pApellido;
         this.materia = pMateria;
         this.estado = pEstado;
     }
     maestros.prototype.changeEstado = function () {
-        if (this.estado === "Contratado") {
-            this.estado = "Despedido";
+        if (this.estado === "Despedido") {
+            this.estado = "Contratado";
         }
         else {
-            this.estado = "Contratado";
+            this.estado = "Despedido";
         }
     };
     return maestros;
@@ -48,9 +48,9 @@ listaAlumnos[3] = new alumnos("Teresa", "Viva", "Matematicas", 7);
 listaMaestros[1] = new maestros("Jose", "De San Martin", "Matematicas", "Contratado");
 listaMaestros[2] = new maestros("Maria", "De los Angeles", "Literatura", "Despedido");
 //
-console.log(listaAlumnos[1]);
+//console.log(listaAlumnos[1]);
 console.log(listaMaestros[2]);
-listaAlumnos[1].setNota(4);
-console.log(listaAlumnos[1]);
-listaMaestros[2].changeEstado;
+//listaAlumnos[1].setNota(4);
+//console.log(listaAlumnos[1]);
+listaMaestros[2].changeEstado();
 console.log(listaMaestros[2]);

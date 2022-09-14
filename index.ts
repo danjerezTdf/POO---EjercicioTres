@@ -30,13 +30,13 @@ class alumnos {
 
 //creo clase maestros
 class maestros {
-    private nomrbe :string;
+    private nombre :string;
     private apellido : string;
     private materia :string;
     private estado : string;
 
     constructor(pNombre :string, pApellido :string,pMateria, pEstado:string){
-        this.nomrbe = pNombre;
+        this.nombre = pNombre;
         this.apellido = pApellido;
         this.materia = pMateria;
         this.estado = pEstado;
@@ -44,10 +44,10 @@ class maestros {
     }
 
     changeEstado ():void {
-        if (this.estado === "Contratado"){
-            this.estado = "Despedido";
-        }else{ 
+        if (this.estado === "Despedido"){
             this.estado = "Contratado";
+        }else{ 
+            this.estado = "Despedido";
         }
     }
 }
@@ -64,16 +64,15 @@ listaMaestros[2]= new maestros ("Maria","De los Angeles","Literatura","Despedido
 
 
 //
-console.log(listaAlumnos[1]);
+//console.log(listaAlumnos[1]);
 
 console.log(listaMaestros[2]);
 
+//listaAlumnos[1].setNota(4);
 
-listaAlumnos[1].setNota(4);
+//console.log(listaAlumnos[1]);
 
-console.log(listaAlumnos[1]);
-
-listaMaestros[2].changeEstado;
+listaMaestros[2].changeEstado();
 
 console.log(listaMaestros[2]);
 
