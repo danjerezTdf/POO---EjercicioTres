@@ -1,4 +1,5 @@
 //let readlineSync = require('readline-sync');
+// creo clase Alumnos
 var alumnos = /** @class */ (function () {
     function alumnos(pNombre, pApellido, pMateria, pNota) {
         this.nomrbe = pNombre;
@@ -21,6 +22,7 @@ var alumnos = /** @class */ (function () {
     };
     return alumnos;
 }());
+//creo clase maestros
 var maestros = /** @class */ (function () {
     function maestros(pNombre, pApellido, pMateria, pEstado) {
         this.nomrbe = pNombre;
@@ -43,8 +45,9 @@ var listaMaestros = new Array();
 listaAlumnos[1] = new alumnos("Juan", "De los Palotes", "Matematicas", 10);
 listaAlumnos[2] = new alumnos("Esteban", "Quito", "Matematicas", 6);
 listaAlumnos[3] = new alumnos("Teresa", "Viva", "Matematicas", 7);
-listaMaestros[1] = new maestros("Jose", "De San Martin", "Matematicas", "Contrado");
-listaMaestros[2] = new maestros("Maria", "De los Angeles", "Literatura", "Despeido");
+listaMaestros[1] = new maestros("Jose", "De San Martin", "Matematicas", "Contratado");
+listaMaestros[2] = new maestros("Maria", "De los Angeles", "Literatura", "Despedido");
+//
 console.log(listaAlumnos[1]);
 console.log(listaMaestros[2]);
 listaAlumnos[1].setNota(4);

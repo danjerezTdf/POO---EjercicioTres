@@ -1,5 +1,5 @@
 //let readlineSync = require('readline-sync');
-
+// creo clase Alumnos
 class alumnos {
     private nomrbe :string;
     private apellido : string;
@@ -28,6 +28,7 @@ class alumnos {
     }
 }
 
+//creo clase maestros
 class maestros {
     private nomrbe :string;
     private apellido : string;
@@ -58,10 +59,11 @@ listaAlumnos[1]= new alumnos ("Juan","De los Palotes","Matematicas",10);
 listaAlumnos[2]= new alumnos ("Esteban","Quito","Matematicas",6);
 listaAlumnos[3]= new alumnos ("Teresa","Viva","Matematicas",7);
 
-listaMaestros[1]= new maestros ("Jose","De San Martin","Matematicas","Contrado");
-listaMaestros[2]= new maestros ("Maria","De los Angeles","Literatura","Despeido");
+listaMaestros[1]= new maestros ("Jose","De San Martin","Matematicas","Contratado");
+listaMaestros[2]= new maestros ("Maria","De los Angeles","Literatura","Despedido");
 
 
+//
 console.log(listaAlumnos[1]);
 
 console.log(listaMaestros[2]);
