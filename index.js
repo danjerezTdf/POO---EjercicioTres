@@ -47,10 +47,15 @@ listaAlumnos[2] = new alumnos("Esteban", "Quito", "Matematicas", 6);
 listaAlumnos[3] = new alumnos("Teresa", "Viva", "Matematicas", 7);
 listaMaestros[1] = new maestros("Jose", "De San Martin", "Matematicas", "Contratado");
 listaMaestros[2] = new maestros("Maria", "De los Angeles", "Literatura", "Despedido");
-//
-//console.log(listaAlumnos[1]);
+// Veo AlumnoUNO
+console.log(listaAlumnos[1]);
+// Veo MaestroDOS
 console.log(listaMaestros[2]);
-//listaAlumnos[1].setNota(4);
-//console.log(listaAlumnos[1]);
+// Cambio Nota AlumnoUNO
+listaAlumnos[1].setNota(4);
+// Veo AlumnoUNO
+console.log(listaAlumnos[1]);
+// Cambio Estado MaestroDos
 listaMaestros[2].changeEstado();
+// Veo MaestroDOS
 console.log(listaMaestros[2]);
