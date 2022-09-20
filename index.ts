@@ -74,13 +74,14 @@ class Maestros {
     private apellido : string;
     private materia :string;
     private estado : boolean;
-    private listaAlumnos:Alumnos[]
+    private listaAlumnos:Alumnos[];
 
     constructor(pNombre :string, pApellido :string,pMateria, pEstado:boolean,pListadoAlumnos:Alumnos[] ){
         this.nombre = pNombre;
         this.apellido = pApellido;
         this.materia = pMateria;
         this.estado = pEstado;
+        this.listaAlumnos = pListadoAlumnos;
 
     }
     getNombre():string{
@@ -97,6 +98,9 @@ class Maestros {
     }
     getMateria():string{
         return this.materia;
+    }
+    getListaAlumnos ():Alumnos[]{
+        return this.listaAlumnos;
     }
     getEstado():void{
         if(this.estado === true){
@@ -161,6 +165,7 @@ let AlumnoDos = new Alumnos("Juan","Carlos",8,6,true);
 let AlumnoTres = new Alumnos("Juan","Lopez",9,2,true);
 
 let listadoAlumnosUno : Alumnos[] = [AlumnoUno,AlumnoDos,AlumnoTres];
+//console.log(listadoAlumnosUno);
 
 let MaestroUno = new Maestros ("Daniel","Gonazalez","Literatura",true,listadoAlumnosUno);
 let MaestroDos = new Maestros ("Fabian","Chavez","Matematicas",true,listadoAlumnosUno);
@@ -182,6 +187,7 @@ console.log("----------------------------------------------------------------")
 console.log("----------------------------------------------------------------")
 console.log(MaestroUno.getNombre());
 console.log(MaestroUno.getApellido());
+console.log(MaestroUno.getListaAlumnos());
 MaestroUno.getEstado();
 console.log("----------------------------------------------------------------")
 

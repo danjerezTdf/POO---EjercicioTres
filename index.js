@@ -72,6 +72,7 @@ var Maestros = /** @class */ (function () {
         this.apellido = pApellido;
         this.materia = pMateria;
         this.estado = pEstado;
+        this.listaAlumnos = pListadoAlumnos;
     }
     Maestros.prototype.getNombre = function () {
         return this.nombre;
@@ -87,6 +88,9 @@ var Maestros = /** @class */ (function () {
     };
     Maestros.prototype.getMateria = function () {
         return this.materia;
+    };
+    Maestros.prototype.getListaAlumnos = function () {
+        return this.listaAlumnos;
     };
     Maestros.prototype.getEstado = function () {
         if (this.estado === true) {
@@ -142,6 +146,7 @@ var AlumnoUno = new Alumnos("Juan", "Perez", 5, 4, true);
 var AlumnoDos = new Alumnos("Juan", "Carlos", 8, 6, true);
 var AlumnoTres = new Alumnos("Juan", "Lopez", 9, 2, true);
 var listadoAlumnosUno = [AlumnoUno, AlumnoDos, AlumnoTres];
+//console.log(listadoAlumnosUno);
 var MaestroUno = new Maestros("Daniel", "Gonazalez", "Literatura", true, listadoAlumnosUno);
 var MaestroDos = new Maestros("Fabian", "Chavez", "Matematicas", true, listadoAlumnosUno);
 var listadoMaestrosUno = [MaestroUno, MaestroDos];
@@ -158,6 +163,7 @@ console.log("----------------------------------------------------------------");
 console.log("----------------------------------------------------------------");
 console.log(MaestroUno.getNombre());
 console.log(MaestroUno.getApellido());
+console.log(MaestroUno.getListaAlumnos());
 MaestroUno.getEstado();
 console.log("----------------------------------------------------------------");
 // consulto sobre EscuelaUno
