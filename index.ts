@@ -1,24 +1,46 @@
-//let readlineSync = require('readline-sync');
 // creo clase Alumnos
-class alumnos {
-    private nomrbe :string;
+class Alumnos {
+    private nombre :string;
     private apellido : string;
-    private materia :string;
-    private nota : number;
+    private notaMatematicas : number;
+    private notaLiteratura: number;
+    private estado : boolean;
 
-    constructor(pNombre :string, pApellido :string,pMateria :string,pNota :number){
-        this.nomrbe = pNombre;
+    constructor(pNombre :string, pApellido :string,pNotaMatematicas :number, pNotaLiteratura :number, pEstado :boolean){
+        this.nombre = pNombre;
         this.apellido = pApellido;
-        this.materia = pMateria;
-        this.nota = pNota;
+        this.notaMatematicas = pNotaMatematicas;
+        this.notaLiteratura = pNotaLiteratura;
+        this.estado = pEstado;
     }
 
-    setNota (sNota:number){
-        this.nota = sNota;
+    getNombre():string{
+        return this.nombre;
     }
-
-    getEstado ():string {
-        if (this.nota >= 7){
+    setNombre (sNombre:string){
+        this.nombre = sNombre;
+    }
+    getApellido():string{
+        return this.apellido;
+    }
+    setApellido (sApellido:string){
+        this.apellido = sApellido;
+    }
+    getEstado():void{
+        if(this.estado === true){
+            console.log("El Alumno esta: Matriculado");
+        }else{
+            console.log("El Alumno esta: Expulsado")
+        }
+    }
+    setNotaMatematicas (sNota:number){
+        this.notaMatematicas = sNota;
+    }
+    setNotaLiteratura (sNota:number){
+        this.notaLiteratura = sNota;
+    }
+    getEvaluacionMatematicas():string {
+        if (this.notaMatematicas >= 7){
             let estado : string = "Aprobado";
             return estado
         }else{
@@ -26,60 +48,157 @@ class alumnos {
             return estado
         }
     }
+    getEvaluacionLiteratura():string {
+        if (this.notaLiteratura >= 7){
+            let estado : string = "Aprobado";
+            return estado
+        }else{
+            let estado : string = "Desaprobado"
+            return estado
+        }
+    }
+    changeEstado ():void {
+        if (this.estado === true){
+            this.estado = false;
+            console.log("Se Expulso Alumno");
+        }else{ 
+            this.estado = true;
+            console.log("Se Matriculo Alumno");
+        }
+    }
 }
 
 //creo clase maestros
-class maestros {
+class Maestros {
     private nombre :string;
     private apellido : string;
     private materia :string;
-    private estado : string;
+    private estado : boolean;
+    private listaAlumnos:Alumnos[]
 
-    constructor(pNombre :string, pApellido :string,pMateria, pEstado:string){
+    constructor(pNombre :string, pApellido :string,pMateria, pEstado:boolean,pListadoAlumnos:Alumnos[] ){
         this.nombre = pNombre;
         this.apellido = pApellido;
         this.materia = pMateria;
         this.estado = pEstado;
 
     }
+    getNombre():string{
+        return this.nombre;
+    }
+    setNombre (sNombre:string){
+        this.nombre = sNombre;
+    }
+    getApellido():string{
+        return this.apellido;
+    }
+    setApellido (sApellido:string){
+        this.apellido = sApellido;
+    }
+    getMateria():string{
+        return this.materia;
+    }
+    getEstado():void{
+        if(this.estado === true){
+            console.log("El Maestro esta: Contratado");
+        }else{
+            console.log("El Maestro esta: Despedido");
+        }
+    }
 
     changeEstado ():void {
-        if (this.estado === "Despedido"){
-            this.estado = "Contratado";
+        if (this.estado === false){
+            this.estado = true;
+            console.log("Se Contrato Maestro");
         }else{ 
-            this.estado = "Despedido";
+            this.estado = false;
+            console.log("Se Despidio Maestro");
         }
     }
 }
+//creo clase escuela
+class Escuela {
+    private nombreEscuela:string;
+    private listadoAlumnos:Alumnos[];
+    private listadoMaestros:Maestros[];
 
-let listaAlumnos = new Array();
-let listaMaestros = new Array();
+    constructor(pNombre:string,pListadoAlumnos:Alumnos[],pListadoMaestros:Maestros[]) {
+        this.nombreEscuela = pNombre;
+        this.listadoAlumnos = pListadoAlumnos;
+        this.listadoMaestros = pListadoMaestros;
+    }
 
-listaAlumnos[1]= new alumnos ("Juan","De los Palotes","Matematicas",10);
-listaAlumnos[2]= new alumnos ("Esteban","Quito","Matematicas",6);
-listaAlumnos[3]= new alumnos ("Teresa","Viva","Matematicas",7);
+    public getNombreEscuela():string{
+        return this.nombreEscuela;
+    }
+    public setNombreEscuela(pNombre):void{
+        this.nombreEscuela = pNombre;
+    }
 
-listaMaestros[1]= new maestros ("Jose","De San Martin","Matematicas","Contratado");
-listaMaestros[2]= new maestros ("Maria","De los Angeles","Literatura","Despedido");
+    public changeEstadoMaestro(pMaestro:Maestros):void{
+        for (let i:number=0; i<this.listadoMaestros.length; i++){
+            if(pMaestro.getApellido() === this.listadoMaestros[i].getApellido()){
+                this.listadoMaestros[i].changeEstado();
+            }
+        }
 
+    }
+    public chageEstadoAlumno(pAlumno:Alumnos):void{
+        for (let i:number=0; i<this.listadoAlumnos.length; i++){
+            if(pAlumno.getApellido() === this.listadoAlumnos[i].getApellido()){
+                this.listadoAlumnos[i].changeEstado();
+            }
+        }
 
-// Veo AlumnoUNO
-console.log(listaAlumnos[1]);
+    }
 
-// Veo MaestroDOS
-console.log(listaMaestros[2]);
+}
 
-// Cambio Nota AlumnoUNO
-listaAlumnos[1].setNota(4);
+// creo instancias de clases
 
-// Veo AlumnoUNO
-console.log(listaAlumnos[1]);
+let AlumnoUno = new Alumnos("Juan","Perez",5,4,true);
+let AlumnoDos = new Alumnos("Juan","Carlos",8,6,true);
+let AlumnoTres = new Alumnos("Juan","Lopez",9,2,true);
 
-// Cambio Estado MaestroDos
-listaMaestros[2].changeEstado();
+let listadoAlumnosUno : Alumnos[] = [AlumnoUno,AlumnoDos,AlumnoTres];
 
-// Veo MaestroDOS
-console.log(listaMaestros[2]);
+let MaestroUno = new Maestros ("Daniel","Gonazalez","Literatura",true,listadoAlumnosUno);
+let MaestroDos = new Maestros ("Fabian","Chavez","Matematicas",true,listadoAlumnosUno);
 
+let listadoMaestrosUno : Maestros[] = [MaestroUno,MaestroDos];
+
+let EscuelaUno = new Escuela ("NormalUno",listadoAlumnosUno,listadoMaestrosUno)
+
+// consulto sobre AlumnoDos 
+console.log("----------------------------------------------------------------")
+console.log(AlumnoDos.getNombre());
+console.log(AlumnoDos.getApellido());
+console.log(AlumnoDos.getEvaluacionLiteratura());
+console.log(AlumnoDos.getEvaluacionMatematicas());
+AlumnoDos.getEstado();
+console.log("----------------------------------------------------------------")
+
+// consulto sobre MestroUno
+console.log("----------------------------------------------------------------")
+console.log(MaestroUno.getNombre());
+console.log(MaestroUno.getApellido());
+MaestroUno.getEstado();
+console.log("----------------------------------------------------------------")
+
+// consulto sobre EscuelaUno
+
+console.log("----------------------------------------------------------------")
+console.log(EscuelaUno.getNombreEscuela());
+console.log("----------------------------------------------------------------")
+
+// Escuela cambia estado de AlumnoDos
+console.log("****************************************************************")
+EscuelaUno.chageEstadoAlumno(AlumnoDos);
+console.log("****************************************************************")
+
+// Escuala Cambia estado de MaestroUNO;
+console.log("****************************************************************")
+EscuelaUno.changeEstadoMaestro(MaestroDos);
+console.log("****************************************************************")
 
 
